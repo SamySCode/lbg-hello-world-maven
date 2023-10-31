@@ -11,15 +11,15 @@ pipeline {
               steps {
                  // Run Maven on a Unix agent.
                  sh "mvn clean compile"
-              }
+                }
            }
-        stage('Test') {
+          stage('Test') {
                 steps {
-                    // Run Maven on a Unix agent.
-                    sh "mvn test"
+                 // Run Maven on a Unix agent.
+                 sh "mvn test"
                 }
             }
-        stage('SonarQube') {
+          stage('SonarQube') {
                 environment {
                         scannerHome = tool 'sonarqube'
                 }
@@ -28,8 +28,8 @@ pipeline {
                                 sh "${scannerHome}/bin/sonar-scanner"
                         }
                 }
-        }
-                stage('Package') {
+           }
+          stage('Package') {
                 steps {
                     // Run Maven on a Unix agent.
                     sh "mvn package"
