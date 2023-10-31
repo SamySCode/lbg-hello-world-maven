@@ -7,13 +7,18 @@ pipeline {
         }
 
         stages {
+          stage('Checkout') {
+                  steps {
+                        git branch: 'main', url: 'https://github.com/PaulMercer1/lbg-hello-world-maven.git'
+                  }
+          }
           stage('Compile') {
               steps {
                  // Run Maven on a Unix agent.
                  sh "mvn clean compile"
                 }
            }
-          stage('Test') {
+          stage('Testing') {
                 steps {
                  // Run Maven on a Unix agent.
                  sh "mvn test"
